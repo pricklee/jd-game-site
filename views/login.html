@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="static/login.css">
+		<title>Jammer Dash - Login</title>
+	</head>
+	<body>
+		<div>
+			<form id="login">
+				<h1>Log into Jammer Dash</h1>
+				<div class="input-box stack">
+					<input type="username" id="user-name" placeholder="Username" name="username" required>
+				</div>
+				<div class="input-box stack">
+					<input type="password" id="user-password" placeholder="Password" name="password" required>
+				</div>
+				<div class="remember-forgot stack">
+					<label>
+						<input type="checkbox" id="user-remember" name="remember"> Remember me
+					</label>
+					<a href="something">Forgot password?</a>
+				</div>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+		<script src="static/hasher.js"></script>
+		<script src="static/login.js"></script>
+	</body>
+</html>

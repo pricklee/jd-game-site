@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="static/login.css">
+		<title>Jammer Dash - Account creation</title>
+	</head>
+	<body>
+		<div>
+			<form id="signup">
+				<h1>Create a Jammer Dash account</h1>
+				<div class="input-box stack">
+					<input type="nickname" id="user-display" placeholder="Nickname" name="nickname" required>
+				</div>
+				<div class="input-box stack">
+					<input type="username" id="user-name" placeholder="Username (lowercase only)" name="username" required>
+				</div>
+				
+				<div class="input-box stack">
+					<input type="email" id="user-email" placeholder="E-Mail" name="mail" required>
+				</div>
+				<div class="input-box stack">
+					<input type="password" id="user-password" placeholder="Password" name="password" required>
+				</div>
+				<div class="remember-forgot stack">
+					<label>
+						<input type="checkbox" id="user-remember" name="remember"> Remember me
+					</label>
+					<a href="mailto:support@jammerdash.com">Questions? Email us!</a>
+				</div>
+				<button type="submit">Register</button>
+			</form>
+		</div>
+		<script src="static/hasher.js"></script>
+		<script src="static/signup.js"></script>
+	</body>
+</html>
