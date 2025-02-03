@@ -1,18 +1,31 @@
 document.getElementById('signup').addEventListener('submit', function(event) {
     event.preventDefault();
     
+    // Get values from form inputs
     const name = document.getElementById('user-display').value;
     const user = document.getElementById('user-name').value;
     const mail = document.getElementById('user-email').value;
     const pass = document.getElementById('user-password').value;
 
+    // Get the CAPTCHA response
+    const captchaResponse = grecaptcha.getResponse();
+
+    // Check if CAPTCHA is filled
+    if (!captchaResponse) {
+        alert("Please complete the CAPTCHA.");
+        return;
+    }
+
+    // Prepare the data to send
     const login = JSON.stringify({
         nickname: name,
         username: user,
         email: mail,
-        password: pass
+        password: pass,
+        captchaResponse: captchaResponse
     });
 
+    // Send the data using fetch
     fetch('https://api.jammerdash.com/v1/account/signup', {
         method: 'POST',
         headers: {
