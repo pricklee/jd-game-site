@@ -1,24 +1,22 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import ejs from 'ejs';
+import path from 'path';
 
 const app = express();
-const port = 3000;
-
-app.set('views', './views');
-app.engine('html', ejs.renderFile);
-app.set('view engine', 'ejs');
 
 app.use(bodyParser.json({ extended: true }));
 app.use('/static', express.static('static'));
 
-// Routes
 app.get('/', (req, res) => {
-    res.render('frontpage');
+    res.sendFile(path.join(__dirname, 'views', 'frontpage.html'));
 });
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'register.html'));
 });
 
 app.post('/login', express.json(), (req, res) => {
@@ -26,16 +24,9 @@ app.post('/login', express.json(), (req, res) => {
     res.redirect('/');
 });
 
-app.get('/register', (req, res) => {
-    res.render('register');
-});
-
 app.post('/register', express.json(), (req, res) => {
     console.log(req.body);
     res.redirect('/');
 });
 
-// Start Server
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+export default app;
