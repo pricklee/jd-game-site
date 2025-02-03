@@ -39,7 +39,7 @@ document.getElementById('login').addEventListener('submit', function(event) {
     
         if (data.token && data.user.id && data.user && data.user.username) {
             console.log('Token:', data.token); 
-            console.log('UUID:', data.uuid);
+            console.log('UUID:', data.user.id);
             console.log('Username:', data.user.username);
             // Set cookies
             document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
