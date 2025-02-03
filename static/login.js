@@ -32,11 +32,16 @@ document.getElementById('login').addEventListener('submit', function(event) {
     })
     .then(data => {
         console.log('Success:', data);
-
-            document.cookie = `token=${data.token}; path=/; secure; samesite=strict`;
-            document.cookie = `uuid=${data.uuid}; path=/; secure; samesite=strict`;
-            document.cookie = `username=${user}; path=/; secure; samesite=strict`;
-            window.location.href = '/';
         
+        // Setting cookies
+        document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
+        document.cookie = `uuid=${data.uuid}; path=/; secure; samesite=strict`;
+        document.cookie = `username=${data.user.username}; path=/; secure; samesite=strict`;
+        
+        // Debug log
+        console.log('Cookies set:', document.cookie);
+   
+        window.location.href = '/';
     })
+   
 });
