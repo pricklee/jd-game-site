@@ -14,11 +14,11 @@ app.use('/static', express.static('static'));
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('frontpage.html');
+    res.render('frontpage');
 });
 
 app.get('/login', (req, res) => {
-    res.render('login.html');
+    res.render('login');
 });
 
 app.post('/login', express.json(), (req, res) => {
@@ -27,7 +27,7 @@ app.post('/login', express.json(), (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-    res.render('register.html');
+    res.render('register');
 });
 
 app.post('/register', express.json(), (req, res) => {
