@@ -22,8 +22,7 @@ document.getElementById('login').addEventListener('submit', function(event) {
         headers: {
             'Content-Type': 'application/json',
             'Referer': 'https://api.jammerdash.com',
-            'x-client': 'Jammer-Dash',
-            'User-Agent': 'JammerDash/b0.5 (UnityPlayer/6000.0.23f1; JDBrowser)',
+            'x-client': 'Jammer-Dash'
         },
         body: login
     })
