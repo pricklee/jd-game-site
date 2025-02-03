@@ -16,7 +16,8 @@ document.getElementById('signup').addEventListener('submit', function(event) {
     fetch('https://api.jammerdash.com/v1/account/signup', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'game.jammerdash.com'
         },
         body: login
     })
