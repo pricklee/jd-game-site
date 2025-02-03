@@ -1,16 +1,19 @@
 document.getElementById('signup').addEventListener('submit', function(event) {
     event.preventDefault();
-    
+
     // Get values from form inputs
     const name = document.getElementById('user-display').value;
     const user = document.getElementById('user-name').value;
     const mail = document.getElementById('user-email').value;
     const pass = document.getElementById('user-password').value;
 
-    // Get the CAPTCHA response
-    const captchaResponse = grecaptcha.getResponse();
+    if (typeof grecaptcha === 'undefined') {
+        console.error('reCAPTCHA is not available!');
+        return;
+    }
 
-    // Check if CAPTCHA is filled
+    const captchaResponse = grecaptcha.enterprise.getResponse();
+
     if (!captchaResponse) {
         alert("Please complete the CAPTCHA.");
         return;
