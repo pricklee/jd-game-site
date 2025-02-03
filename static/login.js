@@ -22,8 +22,7 @@ document.getElementById('login').addEventListener('submit', function(event) {
         headers: {
             'Content-Type': 'application/json',
             'Referer': 'https://api.jammerdash.com',
-            'x-client': 'Jammer-Dash',
-            'Access-Control-Allow-Origin': 'https://api.jammerdash.com'
+            'x-client': 'Jammer-Dash'
         },
         body: login
     })
