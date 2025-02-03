@@ -33,14 +33,11 @@ document.getElementById('login').addEventListener('submit', function(event) {
     .then(data => {
         console.log('Success:', data);
 
-        if (data.token && data.uuid) {
             document.cookie = `token=${data.token}; path=/; secure; samesite=strict`;
             document.cookie = `uuid=${data.uuid}; path=/; secure; samesite=strict`;
             document.cookie = `username=${user}; path=/; secure; samesite=strict`;
             window.location.href = '/';
-        } else {
-            alert('Login failed: token is null.');
-        }
+        
     })
     .catch((error) => {
         console.error('Error:', error);
