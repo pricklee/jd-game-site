@@ -32,26 +32,30 @@ document.getElementById('login').addEventListener('submit', function(event) {
         return response.json();
     })
     .then(data => {
-        console.log('Success:', data);  // Check the full response
+        console.log('Full Response:', JSON.stringify(data, null, 2));  // Pretty print the response for better inspection
+        // Check if token and uuid exist, and log their structure
         console.log('Token:', data.token);
         console.log('UUID:', data.uuid);
     
-        // Ensure that the token and uuid exist before proceeding
         if (data.token && data.uuid && data.user && data.user.username) {
-            // Setting cookies
+            console.log('Token:', data.token); 
+            console.log('UUID:', data.uuid);
+            console.log('Username:', data.user.username);
+            // Set cookies
             document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
             document.cookie = `uuid=${data.uuid}; path=/; samesite=None; secure`;
             document.cookie = `username=${data.user.username}; path=/; samesite=None; secure`;
     
             console.log('Cookies set:', document.cookie);
-            window.location.href = '/'; // Redirect after successful login
+            window.location.href = '/';
         } else {
             alert('Login failed: Missing token or uuid.');
+            console.error('API Response Error: Missing token or uuid');
         }
     })
-    
     .catch(error => {
         console.error('Error:', error);
         alert('Login failed: ' + error.message);
     });
+    
 });
