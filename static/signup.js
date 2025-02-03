@@ -38,25 +38,8 @@ document.getElementById('signup').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         console.log('Full Response:', JSON.stringify(data, null, 2));  // Pretty print the response for better inspection
-        // Check if token and uuid exist, and log their structure
-        console.log('Token:', data.token);
-        console.log('UUID:', data.uuid);
-    
-        if (data.token && data.uuid && data.user && data.user.username) {
-            console.log('Token:', data.token); 
-            console.log('UUID:', data.uuid);
-            console.log('Username:', data.user.username);
-            // Set cookies
-            document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
-            document.cookie = `uuid=${data.uuid}; path=/; samesite=None; secure`;
-            document.cookie = `username=${data.user.username}; path=/; samesite=None; secure`;
-    
-            console.log('Cookies set:', document.cookie);
-            window.location.href = '/';
-        } else {
-            alert('Login failed: Missing token or uuid.');
-            console.error('API Response Error: Missing token or uuid');
-        }
+        alert("Account successfully created! Welcome to Jammer Dash!");
+        window.location.href = "/";
     })
     .catch(error => {
         console.error('Error:', error);
