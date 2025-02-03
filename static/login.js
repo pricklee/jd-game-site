@@ -22,7 +22,8 @@ document.getElementById('login').addEventListener('submit', function(event) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: login
+        body: login,
+        credentials: 'include'  // Required for cross-origin cookie handling
     })
     .then(response => {
         if (!response.ok) {
@@ -32,16 +33,24 @@ document.getElementById('login').addEventListener('submit', function(event) {
     })
     .then(data => {
         console.log('Success:', data);
-        
-        // Setting cookies
-        document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
-        document.cookie = `uuid=${data.uuid}; path=/; secure; samesite=strict`;
-        document.cookie = `username=${data.user.username}; path=/; secure; samesite=strict`;
-        
-        // Debug log
-        console.log('Cookies set:', document.cookie);
-   
-        window.location.href = '/';
+
+        // Ensure the necessary fields exist before setting cookies
+        if (data.token && data.uuid && data.user && data.user.username) {
+            // Setting cookies with SameSite=None and Secure
+            document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
+            document.cookie = `uuid=${data.uuid}; path=/; samesite=None; secure`;
+            document.cookie = `username=${data.user.username}; path=/; samesite=None; secure`;
+
+            // Debug log
+            console.log('Cookies set:', document.cookie);
+
+            window.location.href = '/'; // Redirect after successful login
+        } else {
+            alert('Login failed: Missing token or uuid.');
+        }
     })
-   
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Login failed: ' + error.message);
+    });
 });
