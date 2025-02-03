@@ -37,13 +37,13 @@ document.getElementById('login').addEventListener('submit', function(event) {
         console.log('Token:', data.token);
         console.log('UUID:', data.uuid);
     
-        if (data.token && data.uuid && data.user && data.user.username) {
+        if (data.token && data.user.id && data.user && data.user.username) {
             console.log('Token:', data.token); 
             console.log('UUID:', data.uuid);
             console.log('Username:', data.user.username);
             // Set cookies
             document.cookie = `token=${data.token}; path=/; samesite=None; secure`;
-            document.cookie = `uuid=${data.uuid}; path=/; samesite=None; secure`;
+            document.cookie = `uuid=${data.user.id}; path=/; samesite=None; secure`;
             document.cookie = `username=${data.user.username}; path=/; samesite=None; secure`;
     
             console.log('Cookies set:', document.cookie);
