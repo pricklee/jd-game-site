@@ -5,7 +5,7 @@ import ejs from 'ejs';
 const app = express();
 const port = 3000;
 
-app.set('views', './static');
+app.set('views', './views');
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
