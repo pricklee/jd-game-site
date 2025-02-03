@@ -39,8 +39,4 @@ document.getElementById('login').addEventListener('submit', function(event) {
             window.location.href = '/';
         
     })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Login failed: ' + error.message);
-    });
 });
