@@ -5,7 +5,8 @@ import path from 'path';
 const app = express();
 
 app.use(bodyParser.json({ extended: true }));
-app.use('/static', express.static('static'));
+app.use('/static', express.static(path.join(__dirname, 'static')));
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'frontpage.html'));
