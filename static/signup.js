@@ -11,7 +11,6 @@ document.getElementById('signup').addEventListener('submit', function(event) {
         console.error('reCAPTCHA is not available!');
         return;
     }
-
     const captchaResponse = grecaptcha.enterprise.getResponse();
 
     if (!captchaResponse) {
