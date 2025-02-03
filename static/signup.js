@@ -23,8 +23,10 @@ document.getElementById('signup').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        window.location.href = "https://game.jammerdash.com/";
     })
     .catch((error) => {
         console.error('Error:', error);
+        alert("Error: " + error);
     });
 });

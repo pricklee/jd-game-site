@@ -20,9 +20,7 @@ document.getElementById('login').addEventListener('submit', function(event) {
     fetch(url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Referer': 'https://api.jammerdash.com',
-            'x-client': 'Jammer-Dash'
+            'Content-Type': 'application/json'
         },
         body: login
     })
