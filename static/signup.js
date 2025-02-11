@@ -7,24 +7,14 @@ document.getElementById('signup').addEventListener('submit', function(event) {
     const mail = document.getElementById('user-email').value;
     const pass = document.getElementById('user-password').value;
 
-    if (typeof grecaptcha === 'undefined') {
-        console.error('reCAPTCHA is not available!');
-        return;
-    }
-    const captchaResponse = grecaptcha.enterprise.getResponse();
-
-    if (!captchaResponse) {
-        alert("Please complete the CAPTCHA.");
-        return;
-    }
+    
 
     // Prepare the data to send
     const login = JSON.stringify({
         nickname: name,
         username: user,
         email: mail,
-        password: pass,
-        captchaResponse: captchaResponse
+        password: pass
     });
 
     // Send the data using fetch
